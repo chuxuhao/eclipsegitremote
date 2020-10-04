@@ -1,0 +1,18 @@
+package FacadePattern;
+
+public class EncryptFacade {
+	private FileReader reader;
+	private NewCipherMachine cipher;
+	private FileWriter writer;
+	
+	public EncryptFacade() {
+		reader=new FileReader();
+		cipher=new NewCipherMachine();
+		writer=new FileWriter();
+	}
+	public void fileEncrypt(String fileNameSrc,String fileNameDes) {
+		String plainStr=reader.read(fileNameSrc);
+		String encryptStr=cipher.encrypt(plainStr);
+		writer.write(encryptStr, fileNameDes);
+	}
+}
